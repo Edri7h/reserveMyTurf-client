@@ -220,9 +220,10 @@
 import React, { useState } from "react";
 import type { ChangeEvent, FormEvent } from "react";
 import { toast } from "sonner";
-import { Loader2, X } from "lucide-react";
+import { Loader2 } from "lucide-react";
 import axiosClient from "@/lib/axios";
 import { useNavigate } from "react-router-dom";
+import ImageUploader from "./ImageUploader";
 
 interface TurfForm {
   name: string;
@@ -250,16 +251,16 @@ const CreateTurfPage: React.FC = () => {
     setForm((prev) => ({ ...prev, [name]: value }));
   };
 
-  const handleImageChange = (e: ChangeEvent<HTMLInputElement>) => {
-    if (e.target.files) {
-      const newFiles = Array.from(e.target.files);
-      setImages((prev) => [...prev, ...newFiles]);
-    }
-  };
+  // const handleImageChange = (e: ChangeEvent<HTMLInputElement>) => {
+  //   if (e.target.files) {
+  //     const newFiles = Array.from(e.target.files);
+  //     setImages((prev) => [...prev, ...newFiles]);
+  //   }
+  // };
 
-  const removeImage = (index: number) => {
-    setImages((prev) => prev.filter((_, i) => i !== index));
-  };
+  // const removeImage = (index: number) => {
+  //   setImages((prev) => prev.filter((_, i) => i !== index));
+  // };
 
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
@@ -364,53 +365,7 @@ const CreateTurfPage: React.FC = () => {
           </div>
 
           {/* Image Upload */}
-          <div className="mt-8">
-  <label className="block text-sm font-medium text-gray-700 mb-2">Upload Images</label>
-
-  {/* Wrap input INSIDE label for full mobile support */}
-  <label
-    htmlFor="images"
-    className="block border-2 border-dashed border-gray-300 rounded-md p-6 text-center cursor-pointer hover:bg-gray-50"
-  >
-    <div className="text-neutral-600">
-      <span className="block sm:hidden">Tap here to select photos</span>
-      <span className="hidden sm:block">Click to upload or drag & drop</span>
-    </div>
-    <p className="text-sm text-gray-500 mt-2">JPG or PNG (Max 5MB each)</p>
-
-    <input
-      id="images"
-      type="file"
-      accept="image/*"
-      multiple
-      onChange={handleImageChange}
-      className="sr-only" // use sr-only instead of hidden (accessibility-safe)
-    />
-  </label>
-
-  {images.length > 0 && (
-    <div className="mt-4 grid grid-cols-3 sm:grid-cols-4 md:grid-cols-6 gap-3">
-      {images.map((file, index) => (
-        <div key={index} className="relative group">
-          <div className="aspect-square rounded overflow-hidden border">
-            <img
-              src={URL.createObjectURL(file)}
-              alt={`preview-${index}`}
-              className="w-full h-full object-cover"
-            />
-          </div>
-          <button
-            type="button"
-            onClick={() => removeImage(index)}
-            className="absolute -top-2 -right-2 bg-red-500 text-white rounded-full p-1 hover:bg-red-600 transition-opacity opacity-0 group-hover:opacity-100"
-          >
-            <X className="w-3 h-3" />
-          </button>
-        </div>
-      ))}
-    </div>
-  )}
-</div>
+          <ImageUploader/>
 
 
           {/* Submit Button */}
