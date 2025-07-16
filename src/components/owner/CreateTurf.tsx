@@ -366,23 +366,22 @@ const CreateTurfPage: React.FC = () => {
           {/* Image Upload */}
           <div className="mt-8">
   <label className="block text-sm font-medium text-gray-700 mb-2">Upload Images</label>
-  <div className="border-2 border-dashed border-gray-300 rounded-md p-6 text-center">
-    <label htmlFor="images" className="cursor-pointer block">
-      <div className="text-neutral-600 hover:underline">
-        <span className="block sm:hidden">Tap to select photos from gallery</span>
-        <span className="hidden sm:block">Click to upload or drag & drop</span>
-      </div>
-    </label>
-    <input
-      id="images"
-      type="file"
-      accept="image/*"
-      multiple
-      onChange={handleImageChange}
-      className="hidden"
-    />
+  <label htmlFor="images" className="block border-2 border-dashed border-gray-300 rounded-md p-6 text-center cursor-pointer hover:bg-gray-50">
+    <div className="text-neutral-600">
+      <span className="block sm:hidden">Tap here to select photos</span>
+      <span className="hidden sm:block">Click to upload or drag & drop</span>
+    </div>
     <p className="text-sm text-gray-500 mt-2">JPG or PNG (Max 5MB each)</p>
-  </div>
+  </label>
+  
+  <input
+    id="images"
+    type="file"
+    accept="image/*"
+    multiple
+    onChange={handleImageChange}
+    className="hidden"
+  />
 
   {images.length > 0 && (
     <div className="mt-4 grid grid-cols-3 sm:grid-cols-4 md:grid-cols-6 gap-3">
