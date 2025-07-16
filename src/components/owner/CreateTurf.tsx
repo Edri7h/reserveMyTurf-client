@@ -365,45 +365,49 @@ const CreateTurfPage: React.FC = () => {
 
           {/* Image Upload */}
           <div className="mt-8">
-            <label className="block text-sm font-medium text-gray-700 mb-2">Upload Images</label>
-            <div className="border-2 border-dashed border-gray-300 rounded-md p-6 text-center">
-              <label htmlFor="images" className="cursor-pointer text-neutral-600 hover:underline">
-                Click to upload or drag & drop
-              </label>
-              <input
-                id="images"
-                type="file"
-                accept="image/*"
-                multiple
-                onChange={handleImageChange}
-                className="hidden"
-              />
-              <p className="text-sm text-gray-500 mt-2">JPG or PNG (Max 5MB each)</p>
-            </div>
+  <label className="block text-sm font-medium text-gray-700 mb-2">Upload Images</label>
+  <div className="border-2 border-dashed border-gray-300 rounded-md p-6 text-center">
+    <label htmlFor="images" className="cursor-pointer block">
+      <div className="text-neutral-600 hover:underline">
+        <span className="block sm:hidden">Tap to select photos or take new ones</span>
+        <span className="hidden sm:block">Click to upload or drag & drop</span>
+      </div>
+    </label>
+    <input
+      id="images"
+      type="file"
+      accept="image/*"
+      multiple
+      capture="environment" // This enables camera on mobile
+      onChange={handleImageChange}
+      className="hidden"
+    />
+    <p className="text-sm text-gray-500 mt-2">JPG or PNG (Max 5MB each)</p>
+  </div>
 
-            {images.length > 0 && (
-              <div className="mt-4 grid grid-cols-3 sm:grid-cols-4 md:grid-cols-6 gap-3">
-                {images.map((file, index) => (
-                  <div key={index} className="relative group">
-                    <div className="aspect-square rounded overflow-hidden border">
-                      <img
-                        src={URL.createObjectURL(file)}
-                        alt={`preview-${index}`}
-                        className="w-full h-full object-cover"
-                      />
-                    </div>
-                    <button
-                      type="button"
-                      onClick={() => removeImage(index)}
-                      className="absolute -top-2 -right-2 bg-red-500 text-white rounded-full p-1 hover:bg-red-600 transition-opacity opacity-0 group-hover:opacity-100"
-                    >
-                      <X className="w-3 h-3" />
-                    </button>
-                  </div>
-                ))}
-              </div>
-            )}
+  {images.length > 0 && (
+    <div className="mt-4 grid grid-cols-3 sm:grid-cols-4 md:grid-cols-6 gap-3">
+      {images.map((file, index) => (
+        <div key={index} className="relative group">
+          <div className="aspect-square rounded overflow-hidden border">
+            <img
+              src={URL.createObjectURL(file)}
+              alt={`preview-${index}`}
+              className="w-full h-full object-cover"
+            />
           </div>
+          <button
+            type="button"
+            onClick={() => removeImage(index)}
+            className="absolute -top-2 -right-2 bg-red-500 text-white rounded-full p-1 hover:bg-red-600 transition-opacity opacity-0 group-hover:opacity-100"
+          >
+            <X className="w-3 h-3" />
+          </button>
+        </div>
+      ))}
+    </div>
+  )}
+</div>
 
           {/* Submit Button */}
           <div className="mt-8">
