@@ -369,7 +369,7 @@ const CreateTurfPage: React.FC = () => {
   <div className="border-2 border-dashed border-gray-300 rounded-md p-6 text-center">
     <label htmlFor="images" className="cursor-pointer block">
       <div className="text-neutral-600 hover:underline">
-        <span className="block sm:hidden">Tap to select photos or take new ones</span>
+        <span className="block sm:hidden">Tap to select photos from gallery</span>
         <span className="hidden sm:block">Click to upload or drag & drop</span>
       </div>
     </label>
@@ -378,7 +378,6 @@ const CreateTurfPage: React.FC = () => {
       type="file"
       accept="image/*"
       multiple
-      capture="environment" // This enables camera on mobile
       onChange={handleImageChange}
       className="hidden"
     />
