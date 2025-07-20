@@ -94,7 +94,7 @@ useEffect(() => {
       slot: selectedSlot,
       numPlayers,
     };
-     await axiosClient.post("/api/bookings/create", bookingPayload);
+     await axiosClient.post("/api/bookings/create", bookingPayload,{withCredentials:true});
     toast.success(` Booking successful! Ticket Sent to your Email`);
     setSelectedSlot(null);
     await fetchAvailability(); // 🔥 Refresh slot availability
