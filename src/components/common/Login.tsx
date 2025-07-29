@@ -178,11 +178,11 @@ export default function Login() {
         <div className="mt-6 text-center text-xs text-gray-500">
           <p>
             By signing in, you agree to our{" "}
-            <Link to="/terms" className="text-blue-600 hover:text-blue-700 underline">
+            <Link to="/" className="text-blue-600 hover:text-blue-700 underline">
               Terms
             </Link>{" "}
             and{" "}
-            <Link to="/privacy" className="text-blue-600 hover:text-blue-700 underline">
+            <Link to="/" className="text-blue-600 hover:text-blue-700 underline">
               Privacy
             </Link>
           </p>

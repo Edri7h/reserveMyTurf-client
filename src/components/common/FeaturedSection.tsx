@@ -28,7 +28,7 @@ const FeaturedSection: React.FC = () => {
     <section className="bg-white py-12">
       <div className="max-w-5xl mx-auto px-4">
         <h2 className="text-2xl md:text-3xl font-bold text-center text-gray-800 mb-10">
-          Why Choose TurfBooker?
+          Why Choose Us?
         </h2>
 
         <div className="grid md:grid-cols-3 gap-8">
